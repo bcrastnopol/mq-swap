@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head>
+	<script src="mq-swap.js"></script>
+</head>
+<body>
+	<img src="img/wp-large.jpg" data-swap='{ 
+	"img/wp-small.jpg": "only screen and (min-width: 1px)",
+	"img/wp-med.jpg": "only screen and (min-width: 768px)",
+	"img/wp-large.jpg": "only screen and (min-width: 1200px)"
+	}' alt="">
+	<script>
+	swap.init();
+	</script>
+</body>
