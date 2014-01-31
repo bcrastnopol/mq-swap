@@ -29,19 +29,22 @@ swap = {
 	init: function(){
 		this.imgs = this.getImgs();
 		window.onresize = function(){
-			debounce(this.swap.resize(), 250);
+			this.swap.reflow();
 		};
 	},
 	resize: function(){
 		for(var i = 0; i < this.imgs.length; i++){
 			for(var j = this.imgs[i].sources.length - 1; j >= 0; j--){
-				if(matchMedia(this.imgs[i].sources[j].mq).matches){
+				if(matchMedia(this.imgs[i].sources[j].mq).matches && this.imgs[i].el.src != this.imgs[i].sources[j]['src']){
 					console.log(this.imgs[i].sources[j].mq);
 					this.imgs[i].el.src = this.imgs[i].sources[j]['src'];
 					break;
 				}
 			}
 		}
+	},
+	reflow: function(){
+		debounce(this.resize(), 250);
 	}
 }
 
