@@ -8,7 +8,6 @@ swap = {
 		var i = 0;
 		for (var k in json){
 			if(json.hasOwnProperty(k)){
-				console.log(json);
 				this.sources[i] = {
 					'src': k,
 					'mq': json[k]
