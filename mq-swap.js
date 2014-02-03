@@ -8,7 +8,7 @@ swap = {
 		var i = 0;
 		for (var k in json){
 			if(json.hasOwnProperty(k)){
-				console.log(json, 'hgfdga');
+				console.log(json);
 				this.sources[i] = {
 					'src': k,
 					'mq': json[k]
@@ -18,7 +18,6 @@ swap = {
 		}
 	},
 	getImgs: function(){
-		//var j = 0
 		var imgs = document.querySelectorAll('[data-swap]');
 		var imgObjs = new Array();
 		for(var i = 0; i < imgs.length; i++){
@@ -28,6 +27,7 @@ swap = {
 	},
 	init: function(){
 		this.imgs = this.getImgs();
+		this.reflow();
 		window.onresize = function(){
 			this.swap.reflow();
 		};
@@ -35,16 +35,15 @@ swap = {
 	resize: function(){
 		for(var i = 0; i < this.imgs.length; i++){
 			for(var j = this.imgs[i].sources.length - 1; j >= 0; j--){
-				if(matchMedia(this.imgs[i].sources[j].mq).matches && this.imgs[i].el.src != this.imgs[i].sources[j]['src']){
-					console.log(this.imgs[i].sources[j].mq);
-					this.imgs[i].el.src = this.imgs[i].sources[j]['src'];
+				if(matchMedia(this.imgs[i].sources[j].mq).matches){
+					if (this.imgs[i].el.getAttribute('src') != this.imgs[i].sources[j]['src']) this.imgs[i].el.src = this.imgs[i].sources[j]['src'];
 					break;
 				}
 			}
 		}
 	},
 	reflow: function(){
-		debounce(this.resize(), 250);
+		debounce(this.resize(), 500);
 	}
 }
 
