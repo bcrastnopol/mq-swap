@@ -27,33 +27,34 @@ swap = {
 	},
 	init: function(){
 		this.imgs = this.getImgs();
+		this.to = true;
 		this.reflow();
 		window.onresize = function(){
 			this.swap.reflow();
 		};
 	},
 	resize: function(){
-		for(var i = 0; i < this.imgs.length; i++){
-			for(var j = this.imgs[i].sources.length - 1; j >= 0; j--){
-				if(matchMedia(this.imgs[i].sources[j].mq).matches){
-					if (this.imgs[i].el.getAttribute('src') != this.imgs[i].sources[j]['src']) this.imgs[i].el.src = this.imgs[i].sources[j]['src'];
+		self = this.swap.imgs;
+		for(var i = 0; i < self.length; i++){
+			for(var j = self[i].sources.length - 1; j >= 0; j--){
+				if(matchMedia(self[i].sources[j].mq).matches){
+					if (self[i].el.getAttribute('src') != self[i].sources[j]['src']) self[i].el.src = self[i].sources[j]['src'];
 					break;
 				}
 			}
 		}
 	},
 	reflow: function(){
-		debounce(this.resize(), 500);
+		this._debounce(this.resize, 300);
+	},
+
+	_debounce: function(fn, d){ 	//debouncing from kevin chisholm blog.kevinchisholm.com
+	    if (this.to) {
+	    window.clearTimeout(this.to);
+	    }
+	    to = window.setTimeout(fn, d);
 	}
 }
 
-//debouncing from kevin chisholm
-//blog.kevinchisholm.com
- var to = true,
-debounce = function(fn, d){
-    if (to) {
-    window.clearTimeout(to);
-    }
-    to = window.setTimeout(fn, d);
-};
+
 })();
