@@ -34,10 +34,10 @@ swap = {
 		};
 	},
 	resize: function(){
-		self = this.swap.imgs;
+		var self = this.swap.imgs;
 		for(var i = 0; i < self.length; i++){
 			for(var j = self[i].sources.length - 1; j >= 0; j--){
-				if(matchMedia(self[i].sources[j].mq).matches){
+					if(matchMedia(self[i].sources[j].mq).matches){
 					if (self[i].el.getAttribute('src') != self[i].sources[j]['src']) self[i].el.src = self[i].sources[j]['src'];
 					break;
 				}
