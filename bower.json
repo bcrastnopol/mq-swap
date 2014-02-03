@@ -1,0 +1,25 @@
+{
+  "name": "mq-swap",
+  "main": "mq-swap.js",
+  "version": "0.0.2",
+  "homepage": "https://github.com/bcrastnopol/mq-swap",
+  "authors": [
+    "Ben C <bcrastnopol@gmail.com>"
+  ],
+  "description": "Dynamic img src switching based on media queries'",
+  "keywords": [
+    "responsive",
+    "dynamic",
+    "images",
+    "media",
+    "queries"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
