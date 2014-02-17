@@ -9,11 +9,11 @@ Usage:
 	add the data-swap attribute to the image(s) you want to swap.  
 	data-swap takes in a json object where the key is the image url and the value is the media query
 	for example :
-	<pre><img src="" data-swap="{
+	<pre><pre><img src="" data-swap="{
 			img/a.jpg : screen and (min-width: 1px),
 			img/b.jpg : screen and (min-width: 768px),
 			img/d.jpg : screen and (min-width: 1024px)
-		}" alt=""></pre>
+		}" alt=""></pre></pre>
 	Then to run it, include <pre>swap.init();</pre> at the bottom of your page.
 
 	media queries must be listed in ascending order like you would order them in a css file.
